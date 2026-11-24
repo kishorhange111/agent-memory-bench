@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-memory-bench"
+version = "0.1.0"
+description = "Long-term memory for LLM agents: recency windows vs BM25/embedding RAG vs structured fact stores with supersession, on a synthetic multi-session benchmark with knowledge updates and distractors."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Kishor Hange" }]
+dependencies = ["numpy>=1.26", "scikit-learn>=1.4"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+plots = ["matplotlib>=3.8"]
+anthropic = ["anthropic>=0.40"]
+
+[project.scripts]
+membench = "membench.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
